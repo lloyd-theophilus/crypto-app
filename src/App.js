@@ -1,12 +1,30 @@
 import React from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
-import { Layout, Typography, Space } from 'antd';
+import {
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
 
-import { Navbar, Exchanges, Cryptocurrencies, CryptoDetails, News } from './components'
+import {
+  Layout,
+  Typography,
+  Space
+} from 'antd';
+
+import {
+  Navbar,
+  Exchanges,
+  Homepage,
+  Cryptocurrencies,
+  CryptoDetails,
+  News
+} from './components'
+
 import './App.css';
 
 const App = () => {
   return (
+
     <div className="app">
       <div className="navbar">
         <Navbar />
@@ -16,23 +34,17 @@ const App = () => {
         <Layout>
           <div className="routes">
             <Routes>
-              <Route exact path="/" component={(Home) => <div>Home</div>} />
-              <Route
-                exact
-                path="/exchanges"
-                component={(Exchanges) => <div>Exchanges</div>}
-              />
-              <Route
-                exact
-                path="/cryptocurrencies"
-                component={(Cryptocurrencies) => <div>Cryptocurrencies</div>}
-              />
-              <Route
-                exact
-                path="/crypto/:coinId"
-                component={(CryptoDetail) => <div>CryptoDetails</div>}
-              />
-              <Route exact path="/news" component={(News) => <div>News</div>} />
+                <Route exact path="/" element={<Homepage />}>
+                </Route>
+              <Route exact path="/exchanges" element={<Exchanges />}>
+                
+              </Route>
+              <Route exact path="/cryptocurrencies" element={<Cryptocurrencies />}>
+              </Route>
+              <Route exact path="/cryptoDetails" element={<CryptoDetails />}>
+              </Route>
+              <Route exact path="/news" element={<News />}>
+                </Route>
             </Routes>
           </div>
         </Layout>
@@ -54,7 +66,7 @@ const App = () => {
          
         </div>
       </div>
-    </div>
+      </div>
   );
 }
 
