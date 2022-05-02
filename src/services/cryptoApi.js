@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
 const cryptoApiHeaders = {
@@ -18,10 +18,12 @@ export const cryptoApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),
     endpoints: (builder) => ({
         getCryptos: builder.query({
-            query: () => createRequest('/exchanges')
+            query: (name = 12) => createRequest('/coins?limit=' + name),
         })
     })
 })
+
+export const { useGetCryptosQuery } = cryptoApi;
 
 /*
 const axios = require("axios");
