@@ -14,14 +14,14 @@ const createRequest = (url) => ({
 })
 
 export const cryptoApi = createApi({
-    reducerPath: "cryptoApi",
-    baseQuery: fetchBaseQuery({ baseUrl }),
-    endpoints: (builder) => ({
-        getCryptos: builder.query({
-            query: (name = 12) => createRequest('/coins?limit=' + name),
-        })
-    })
-})
+  reducerPath: "cryptoApi",
+  baseQuery: fetchBaseQuery({ baseUrl }),
+  endpoints: (builder) => ({
+    getCryptos: builder.query({
+      query: (count) => createRequest(`/coins?limit=${count}`),
+    }),
+  }),
+});
 
 export const { useGetCryptosQuery } = cryptoApi;
 
